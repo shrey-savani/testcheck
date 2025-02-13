@@ -65,15 +65,15 @@ This project demonstrates how to set up a Kubernetes cluster on Windows using **
 - minikube start --driver=docker
 - kubectl get nodes
 
-# Move Terraform Project Directory
+### Move Terraform Project Directory
 - cd testcheck/TerraformForDeployment\
    
-# Setup terraform & initialize
+### Setup terraform & initialize
 - terraform init
 - terraform apply -auto-approve
 - kubectl get pods
 - kubectl get services
 - minikube IP
 
-# Cleanup the Resources
+### Cleanup the Resources
 - terraform destroy -auto-approve
