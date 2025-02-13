@@ -17,12 +17,8 @@ resource "aws_instance" "example" {
   }
 }
 
-data "aws_instance" "example_instance" {
-  instance_id = aws_instance.example.id
-}
-
 output "instance_public_ip" {
-  value = data.aws_instance.example_instance.public_ip
+  value = aws_instance.example.public_ip
 }
 
 output "instance_name" {
