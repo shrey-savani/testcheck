@@ -11,8 +11,11 @@ This project demonstrates how to set up a Kubernetes cluster on Windows using **
 ### Start Minikube Cluster
 1. minikube start --driver=docker
 2. kubectl get nodes
-      
-# Create Kubernetes Deployment with NGINX
+
+# Move Minikube Project Directory
+- cd testcheck/MinikubProject
+- 
+## Create Kubernetes Deployment with NGINX
 1. Create a file called nginx-deployment.yaml
   1.1 - kubectl apply -f nginx-deployment.yaml
 2. To expose the web server (NGINX)
@@ -25,7 +28,7 @@ This project demonstrates how to set up a Kubernetes cluster on Windows using **
 - kubectl port-forward service/nginx-service 30008:80
 
 # Access via: 
-- http://localhost:30008 or http://127.0.0.1:30008
+- http://localhost:30008 or http://127.0.0.1:30008 or http://system-ip:30008
 
 # Verify the deployment
 - kubectl get deployments
@@ -35,6 +38,17 @@ This project demonstrates how to set up a Kubernetes cluster on Windows using **
 # Export Kubernetes Resources to YAML
 - kubectl get all -A -o yaml > kubernetes_cluster_resources.yaml
 
+# Move Terraform Project Directory
+- cd testcheck/Terraform
+  
+## Create a EC2 (Virtual Machine) Using Terraform
+- terraform init
+- terraform plan
+- terraform apply -auto-approve
+
+# Move Minikube Project Directory
+- cd testcheck/Terraform
+
 ## 1. Create a New Helm Chart for the NGINX deployment
 - helm create nginx-webserver
 
@@ -42,25 +56,20 @@ This project demonstrates how to set up a Kubernetes cluster on Windows using **
 - helm install nginx-webserver ./nginx-webserver
 
 # Verify the Deployment
-kubectl get pods
-kubectl get svc nginx-webserver
+- kubectl get pods
+- kubectl get svc nginx-webserver
 
-## Terraform Configuration
-- main.tf - reating a virtual machine using AWS as the provider.
-1. aws configure
-
-# Initialize Terraform
-1. terraform init
-2. terraform apply -auto-approve
-
-## 2. CI/CD Integration with GitHub Actions to Deploy Resources
+## 2. CI/CD Integration with GitHub Actions to Deploy Resources (Run On GitPull Req)
 - GitHub Actions CI/CD Pipeline
 - Workflow file - k8s-deploy.yaml
 
-##3. Demonstrating a Working Terraform Deployment to the Kubernetes Cluster
+## 3. Demonstrating a Working Terraform Deployment to the Kubernetes Cluster (Name Space : demo-namespace)
 - minikube start --driver=docker
 - kubectl get nodes
-
+- 
+# Move Terraform Project Directory
+- cd testcheck/TerraformForDeployment\
+   
 # Setup terraform & initialize
 - terraform init
 - terraform apply -auto-approve
